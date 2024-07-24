@@ -1,0 +1,6 @@
+.arreglo-imagen{
+    mask-image: linear-gradient(
+        black 99%,
+        transparent
+    );
+}
