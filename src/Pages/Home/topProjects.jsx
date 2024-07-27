@@ -8,8 +8,9 @@ export const topProjects = [
             'https://i.ibb.co/GC2Pq6b/login-redbit.jpg'
         ],
         alt: 'space-apps-challenge',
-        description: 'Marketplace de proyectos para la NASA.',
+        description: 'Propuesta de Marketplace de proyectos para la NASA en Space App Challenge Guatemala.',
         year: 2023,
+        role: ['Desarrollador de Componentes', 'Diseñador'],
         backend: 'https://github.com/RedBit-Force-Blue/Force-Blue/tree/main/redbit-api',
         frontend: 'https://github.com/RedBit-Force-Blue/Force-Blue/tree/main/redbit-public',
         status: 'PUBLIC',
@@ -26,9 +27,10 @@ export const topProjects = [
         alt: 'logo-physics',
         description: 'Aplicación móvil de física para dispositivos Android, contiene calculadora y apartado de contenidos.',
         year: 2023,
+        role: ['Scrum Master', 'Integraciones Frontend', 'Backend'],
         link: 'https://play.google.com/store/apps/details?id=org.realiquez.physics',
         status: 'PUBLIC',
-        skills: ['Android Studio', 'JavaSE', 'Scene Builder', 'Adobe Illustrador']
+        skills: ['Android Studio', 'JavaSE', 'Adobe Illustrador', 'Git']
     },
     {
         id: 'boletas-kinal',
@@ -42,8 +44,10 @@ export const topProjects = [
         alt: 'logo-kinal',
         description: 'Control de notas para Fundación Kinal: genera boletas, busca alumnos y crea reportes en XLS y PDF.',
         year: 2023,
+        role: ['Frontend', 'Backend', 'Diseño', 'Procedimientos Almacenados'],
+        aditional: 'Proyecto privado debido a la colaboración directa con la institución. *Solicitar permisos al repositorio.',
         backend: 'https://github.com/jrealiquez-2019342/boleta-notas.git',
-        status: 'PUBLIC',
+        status: 'PRIVATE',
         skills: ['MySQL', 'JavaSE', 'JavaFX', 'Scene Builder', 'Adobe Illustrador', 'Git']
     },
     {
@@ -61,10 +65,12 @@ export const topProjects = [
         alt: 'white-statistics',
         description: 'Propuesta de sistema de votaciones para el Gobierno de Guatemala y TSE.',
         year: 2024,
+        role: ['Product Owner', 'Scrum Master','Backend', 'Frontend', ''],
+        aditional: 'Código del proyecto privado debido a posibles negociaciones. *Solicitar permisos al repositorio.',
         backend: 'https://github.com/Coffee-Code-2024/sistema-votaciones',
         frontend: 'https://github.com/Coffee-Code-2024/sistema-votaciones-front',
         link: 'https://mivoto-2024.web.app/homepage',
         status: 'PUBLIC / PRIVATE',
-        skills: ['MongoDB', 'ViteJS', 'React', 'JavaScript', 'NodeJS', 'Express', 'Git', 'Thunder Client', 'Git']
+        skills: ['MongoDB', 'ViteJS', 'React', 'JavaScript', 'NodeJS', 'Express', 'Git', 'Thunder Client']
     }
 ];

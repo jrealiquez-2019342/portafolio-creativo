@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import toast from 'react-hot-toast'
 import './index.css'
+import bannerBg from './../../assets/img/banner-bg.png';
+
 
 const Header = () => {
     const [email, setEmail] = useState('jrealiquez-2019342@kinal.edu.gt');
@@ -38,7 +40,11 @@ const Header = () => {
 
     return (
         /*<section className='w-100 h-screen flex flex-row justify-around bg-gradient-to-r from-slate-950 to-cyan-900' id='home'>*/
-        <section className='w-100 h-screen flex flex-row justify-around banner' id='home'>
+        <section
+            className='w-100 h-screen flex flex-row justify-around banner'
+            id='home'
+            style={{ backgroundImage: `url(${bannerBg})` }} // Utiliza la imagen importada
+        >
             <div className='p-5 flex flex-col justify-evenly'>
                 <div>
                     <h2 className='block text-left font-bold text-2xl text-white p-2'>Hola, soy</h2>

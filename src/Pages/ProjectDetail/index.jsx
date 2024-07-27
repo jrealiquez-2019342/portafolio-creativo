@@ -1,20 +1,23 @@
 // ProjectDetail.jsx
-import { useContext } from 'react';
-import { ProjectContext } from '../../Context';
 import { useParams } from 'react-router-dom';
 import { FaGithub } from 'react-icons/fa';
 import { TbWorldWww } from "react-icons/tb";
 import { programmingSkills } from './../Home/technologieskills.jsx';
+import { topProjects } from './../Home/topProjects.jsx';
+import PageNotFound from './../NotFound';
 import CarrouselProject from '../../Components/Carrusel-project-detail';
 import Carrousel from './../../Components/Carrusel-skills';
 import CardSkill from './../../Components/Card-Skills'
+import bannerBg from './../../assets/img/banner-bg.png';
 
 const ProjectDetail = () => {
   const { id } = useParams();
-  const { selectedProject } = useContext(ProjectContext);
+
+  // Encuentra el proyecto desde topProjects
+  const selectedProject = topProjects.find(project => project.id === id);
 
   if (!selectedProject || selectedProject.id !== id) {
-    return <div>Proyecto no encontrado</div>;
+    return <PageNotFound message='Oops! Project Not Found' buttonMsg='Go back to my profile'/>;
   }
 
   const handleClickBackend = () => {
@@ -46,22 +49,46 @@ const ProjectDetail = () => {
   };
 
   return (
-    <div className='banner w-screen h-screen p-4'>
+    <div
+      className='banner w-screen h-screen p-5'
+      style={{ backgroundImage: `url(${bannerBg})` }} // Utiliza la imagen importada
+    >
       <div className='flex flex-row justify-between'>
         <div className='w-1/2 flex justify-center pr-2'>
           <CarrouselProject imageUrls={selectedProject.imgsrc} />
         </div>
 
-        <div className='w-1/2 pl-2 bg-black/50 rounded-xl p-3'>
+        <div className='w-1/2 pl-4 bg-black/50 rounded-xl p-3'>
           <h1 className='text-4xl lg:text-6xl font-bold text-white mb-3'>{selectedProject.title}</h1>
           <p className='mt-2 text-white text-lg lg:text-2xl mb-3'>{selectedProject.description}</p>
           <span className={`text-white text-lg lg:text-xl px-3 py-0.5 rounded-lg ${statusColor}`}>
             {selectedProject.status}
           </span>
-          <div className='flex mt-3 mb-3'>
-            <p className='text-lg lg:text-xl text-white font-bold'>Año de desarrollo:&nbsp;</p>
-            <span className='text-lg lg:text-xl text-white'>{selectedProject.year}</span>
+          <div className='flex flex-col mt-3 mb-3'>
+            <div className='flex'>
+              <p className='text-lg lg:text-xl text-white font-bold'>Año de desarrollo:&nbsp;</p>
+              <span className='text-lg lg:text-xl text-white'>{selectedProject.year}</span>
+            </div>
+            <div className='flex flex-col mt-2'>
+              <p className='text-lg lg:text-xl text-white font-bold'>Rol(es):</p>
+              <ul className='list-disc pl-5 text-lg lg:text-xl text-white'>
+                {
+                  selectedProject.role.map((role) => (
+                    <li key={role}>{role}</li>
+                  ))
+                }
+              </ul>
+            </div>
+            {
+              selectedProject.aditional && (
+                <div className='flex'>
+                  <p className='text-lg lg:text-xl text-white font-bold'>Nota:&nbsp;</p>
+                  <span className='text-lg lg:text-xl text-white'>{selectedProject.aditional}</span>
+                </div>
+              )
+            }
           </div>
+
 
           <div className='flex mt-4 flex-wrap'>
             {selectedProject.backend && (
@@ -100,7 +127,7 @@ const ProjectDetail = () => {
                   const skillData = getSkillData(skillName);
                   return skillData ? (
                     <CardSkill
-                      key={skillData.name}
+                      key={skillData.id}
                       categoria={skillData.categoria}
                       nivel={skillData.nivel}
                       imgsrc={skillData.imgsrc}

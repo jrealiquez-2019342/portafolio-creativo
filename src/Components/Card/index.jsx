@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { ProjectContext } from '../../Context';
 
-const Card = ({ project }) => {
+const Card = ({ name, imgsrc, alt}) => {
   const navigate = useNavigate();
   const { setSelectedProject } = useContext(ProjectContext);
 
@@ -14,16 +14,14 @@ const Card = ({ project }) => {
 
   return (
     <div
-      className='bg-white cursor-pointer w-56 h-60 mb-4'
+      className='bg-white w-56 h-60 mb-4'
       onClick={handleClick}
     >
       <figure className='relative mb-2 w-full h-4/5'>
-        <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5'>{project.title}</span>
-        <span className='absolute bottom-0 right-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5'>{project.year || 'Sin fecha'}</span>
-        <img className='w-full h-full object-cover rounded-lg' src={project.imgsrc[0]} alt={project.alt} />
+        <img className='w-full h-full object-cover rounded-lg' src={imgsrc} alt={alt} />
       </figure>
-      <p className="flex justify-between">
-        <span className='text-sm font-light text-justify'>{project.description}</span>
+      <p className="flex justify-center">
+        <span className='text-sm font-bold text-center'>{name}</span>
       </p>
     </div>
   )
